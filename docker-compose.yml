@@ -3,8 +3,9 @@ web:
   ports:
     - 8080:80
   volumes:
-    - ./log:/var/log
-    - ./approotmount:/app
+    # - ./app:/app
+    # - ./app/craft/plugins:/app/craft/plugins
+    - ./app/craft/templates:/app/craft/templates
   links:
     - mysql
   # env vars are replace into /cms/craft/config

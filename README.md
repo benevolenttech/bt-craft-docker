@@ -13,11 +13,7 @@ A Craft base running on sealink/phpdocker
 *   Uses a local development folder on the host for craft files
 
 
-## Setup
-
-If you want to update the craft version update the Dockerfile with http://craft.dev/craftversion.txt
-
-### Installing:
+## Installing:
 
 Open a terminal:
 
@@ -28,7 +24,7 @@ cd $APPNAME/app
 wget https://download.craftcdn.com/craft/2.6/2.6.2967/Craft-2.6.2967.zip
 unzip Craft-2.6.2967.zip
 cd ../
-cp -rf craft.config/* craft/config
+cp -rf craft.config/* app/craft/config
 docker-compose up
 ```
 
@@ -47,5 +43,8 @@ Rock and roll!
 Add this to your .bashrc and/or .profile for easy ssh
 ```bash
 alias docker-ssh='docker exec -i -t `docker ps --filter name=_web -q` /bin/bash'
+
+alias docker-sync='container=`docker ps --filter name=_web -q`; docker cp app $container:/; docker exec $container /bin/bash -c "chown -R nginx:nginx /app"'
+
 ```
 
