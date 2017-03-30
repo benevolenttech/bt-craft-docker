@@ -29,6 +29,13 @@ web:
     DEV: 'true'
     BASEURL: null # use nginx-proxy port
 
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  ports:
+    - 8081:80
+  links:
+    - mysql:db
+
 mysql:
   image: mysql:5.6
   environment:
